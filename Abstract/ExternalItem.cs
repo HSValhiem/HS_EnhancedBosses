@@ -1,7 +1,7 @@
-﻿using EnhancedBossesRedone.Data;
+﻿using HS_EnhancedBosses.Data;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.Abstract
+namespace HS_EnhancedBosses.Abstract
 {
     public abstract class ExternalItem
     {
@@ -9,7 +9,7 @@ namespace EnhancedBossesRedone.Abstract
         {
             if (objectDB == null)
             {
-                Main.Log!.LogError("No objectDB found.");
+                Plugin.Log!.LogError("No objectDB found.");
             }
         }
 
@@ -17,12 +17,12 @@ namespace EnhancedBossesRedone.Abstract
         {
             if (objectDB == null)
             {
-                Main.Log!.LogError("objectDB not found. Skipping adding item.");
+                Plugin.Log!.LogError("objectDB not found. Skipping adding item.");
                 return;
             }
             if (item == null)
             {
-                Main.Log!.LogError("No entity found to load.");
+                Plugin.Log!.LogError("No entity found to load.");
                 return;
             }
             objectDB.AddCustomAttack(item);

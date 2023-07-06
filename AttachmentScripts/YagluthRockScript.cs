@@ -1,9 +1,9 @@
-﻿using EnhancedBossesRedone.Bosses;
-using EnhancedBossesRedone.Data;
+﻿using HS_EnhancedBosses.Bosses;
+using HS_EnhancedBosses.Data;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.AttachmentScripts
+namespace HS_EnhancedBosses.AttachmentScripts
 {
     public class YagluthRockScript : MonoBehaviour
     {

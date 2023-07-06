@@ -1,4 +1,4 @@
-﻿namespace EnhancedBossesRedone.Data
+﻿namespace HS_EnhancedBosses.Data
 {
     public class CustomAttackData
     {

@@ -1,7 +1,7 @@
-﻿using EnhancedBossesRedone.Abstract;
+﻿using HS_EnhancedBosses.Abstract;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.Bosses
+namespace HS_EnhancedBosses.Bosses
 {
     public class Queen : Boss
     {

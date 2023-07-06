@@ -1,8 +1,8 @@
-﻿using EnhancedBossesRedone.Abstract;
-using EnhancedBossesRedone.Data;
+﻿using HS_EnhancedBosses.Abstract;
+using HS_EnhancedBosses.Data;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.Bosses
+namespace HS_EnhancedBosses.Bosses
 {
     public class Eikthyr : Boss
     {

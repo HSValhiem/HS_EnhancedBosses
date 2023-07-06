@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EnhancedBossesRedone.Data
+namespace HS_EnhancedBosses.Data
 {
     public class CreatureSummonGroup
     {

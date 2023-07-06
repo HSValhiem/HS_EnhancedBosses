@@ -8,10 +8,10 @@ using System.Linq;
 using Newtonsoft.Json;
 using ServerSync;
 using UnityEngine;
-using EnhancedBossesRedone.Bosses;
-using EnhancedBossesRedone.Abstract;
+using HS_EnhancedBosses.Abstract;
+using HS_EnhancedBosses.Bosses;
 
-namespace EnhancedBossesRedone.Data
+namespace HS_EnhancedBosses.Data
 {
     public static class Helpers
     {
@@ -41,7 +41,7 @@ namespace EnhancedBossesRedone.Data
             }
             if (text == null)
             {
-                Main.Log!.LogFatal("AssetBundle " + bundleName + " not found in assembly manifest");
+                Plugin.Log!.LogFatal("AssetBundle " + bundleName + " not found in assembly manifest");
                 return null;
             }
             AssetBundle result;
@@ -66,7 +66,7 @@ namespace EnhancedBossesRedone.Data
             string filePath = Path.Combine(Path.GetDirectoryName(path), bundlePath);
             if (!File.Exists(filePath))
             {
-                Main.Log!.LogFatal("No asset bundle '" + bundlePath + "' found at path '" + path + "'.");
+                Plugin.Log!.LogFatal("No asset bundle '" + bundlePath + "' found at path '" + path + "'.");
                 return null;
             }
 
@@ -79,7 +79,7 @@ namespace EnhancedBossesRedone.Data
             Type reflectedType = (new StackTrace().GetFrames() ?? Array.Empty<StackFrame>()).First(delegate (StackFrame x)
             {
                 Type reflectedType2 = x.GetMethod().ReflectedType;
-                return (reflectedType2 != null ? reflectedType2.Assembly : null) != typeof(Main).Assembly;
+                return (reflectedType2 != null ? reflectedType2.Assembly : null) != typeof(Plugin).Assembly;
             }).GetMethod().ReflectedType;
             if (reflectedType == null)
             {
@@ -106,84 +106,84 @@ namespace EnhancedBossesRedone.Data
         {
             if (itemData.m_lastProjectile != null)
             {
-                Main.Log!.LogInfo("Last Projectile: " + itemData.m_lastProjectile.name);
+                Plugin.Log!.LogInfo("Last Projectile: " + itemData.m_lastProjectile.name);
             }
             else
             {
-                Main.Log!.LogWarning("No last projectile...");
+                Plugin.Log!.LogWarning("No last projectile...");
             }
 
             if (itemData.m_shared.m_hitEffect != null && itemData.m_shared.m_hitEffect.m_effectPrefabs.Length > 0)
             {
-                Main.Log!.LogInfo("Hit Effect prefabs...");
+                Plugin.Log!.LogInfo("Hit Effect prefabs...");
                 foreach (EffectList.EffectData effect in itemData.m_shared.m_hitEffect.m_effectPrefabs)
                 {
                     if (effect.m_prefab != null)
                     {
-                        Main.Log!.LogInfo(effect.m_prefab.name);
+                        Plugin.Log!.LogInfo(effect.m_prefab.name);
                     }
                 }
             }
             else
             {
-                Main.Log!.LogWarning("No Hit Effects");
+                Plugin.Log!.LogWarning("No Hit Effects");
             }
 
             if (itemData.m_shared.m_spawnOnHit != null)
             {
-                Main.Log.LogInfo("Spawn on hit: " + itemData.m_shared.m_spawnOnHit.name);
+                Plugin.Log.LogInfo("Spawn on hit: " + itemData.m_shared.m_spawnOnHit.name);
             }
             else
             {
-                Main.Log.LogWarning("No spawn on hit.");
+                Plugin.Log.LogWarning("No spawn on hit.");
             }
 
             if (itemData.m_shared.m_startEffect != null && itemData.m_shared.m_startEffect.m_effectPrefabs.Length > 0)
             {
-                Main.Log!.LogInfo("Start Effect prefabs...");
+                Plugin.Log!.LogInfo("Start Effect prefabs...");
                 foreach (EffectList.EffectData effect in itemData.m_shared.m_startEffect.m_effectPrefabs)
                 {
                     if (effect.m_prefab != null)
                     {
-                        Main.Log!.LogInfo(effect.m_prefab.name);
+                        Plugin.Log!.LogInfo(effect.m_prefab.name);
                     }
                 }
             }
             else
             {
-                Main.Log.LogWarning("No start effect.");
+                Plugin.Log.LogWarning("No start effect.");
             }
 
             if (itemData.m_shared.m_trailStartEffect != null && itemData.m_shared.m_trailStartEffect.m_effectPrefabs.Length > 0)
             {
-                Main.Log!.LogInfo("Trail Start Effect prefabs...");
+                Plugin.Log!.LogInfo("Trail Start Effect prefabs...");
                 foreach (EffectList.EffectData effect in itemData.m_shared.m_trailStartEffect.m_effectPrefabs)
                 {
                     if (effect.m_prefab != null)
                     {
-                        Main.Log!.LogInfo(effect.m_prefab.name);
+                        Plugin.Log!.LogInfo(effect.m_prefab.name);
                     }
                 }
             }
             else
             {
-                Main.Log.LogWarning("No trail start effect.");
+                Plugin.Log.LogWarning("No trail start effect.");
             }
 
             if (itemData.m_shared.m_triggerEffect != null && itemData.m_shared.m_triggerEffect.m_effectPrefabs.Length > 0)
             {
-                Main.Log!.LogInfo("Trigger Effect prefabs...");
+                Plugin.Log!.LogInfo("Trigger Effect prefabs...");
                 foreach (EffectList.EffectData effect in itemData.m_shared.m_triggerEffect.m_effectPrefabs)
                 {
                     if (effect.m_prefab != null)
                     {
-                        Main.Log!.LogInfo(effect.m_prefab.name);
+                        Plugin.Log!.LogInfo(effect.m_prefab.name);
                     }
                 }
             }
             else
             {
-                Main.Log.LogWarning("No trigger effect.");
+                Plugin.Log.LogWarning("No trigger effect.");
 
             }
 
@@ -194,84 +194,84 @@ namespace EnhancedBossesRedone.Data
         {
             if (attack.m_spawnOnTrigger != null)
             {
-                Main.Log!.LogInfo("Spawn On trigger: " + attack.m_spawnOnTrigger.name);
+                Plugin.Log!.LogInfo("Spawn On trigger: " + attack.m_spawnOnTrigger.name);
             }
             else
             {
-                Main.Log!.LogWarning("No spawn on trigger.");
+                Plugin.Log!.LogWarning("No spawn on trigger.");
             }
 
             if (attack.m_attackProjectile != null)
             {
-                Main.Log!.LogInfo("Attack Projectile: " + attack.m_attackProjectile.name);
+                Plugin.Log!.LogInfo("Attack Projectile: " + attack.m_attackProjectile.name);
             }
             else
             {
-                Main.Log!.LogWarning("No projectile...");
+                Plugin.Log!.LogWarning("No projectile...");
             }
 
             if (attack.m_burstEffect != null && attack.m_burstEffect.m_effectPrefabs.Length > 0)
             {
-                Main.Log.LogInfo("Burst Effect prefabs...");
+                Plugin.Log.LogInfo("Burst Effect prefabs...");
                 foreach (EffectList.EffectData effect in attack.m_burstEffect.m_effectPrefabs)
                 {
                     if (effect.m_prefab != null)
                     {
-                        Main.Log!.LogInfo(effect.m_prefab.name);
+                        Plugin.Log!.LogInfo(effect.m_prefab.name);
                     }
                 }
             }
             else
             {
-                Main.Log.LogWarning("No burst effect prefabs...");
+                Plugin.Log.LogWarning("No burst effect prefabs...");
             }
 
             if (attack.m_hitEffect != null && attack.m_hitEffect.m_effectPrefabs.Length > 0)
             {
-                Main.Log!.LogInfo("Hit Effect prefabs...");
+                Plugin.Log!.LogInfo("Hit Effect prefabs...");
                 foreach (EffectList.EffectData effect in attack.m_hitEffect.m_effectPrefabs)
                 {
                     if (effect.m_prefab != null)
                     {
-                        Main.Log!.LogInfo(effect.m_prefab.name);
+                        Plugin.Log!.LogInfo(effect.m_prefab.name);
                     }
                 }
             }
             else
             {
-                Main.Log!.LogWarning("No hit effect prefabs...");
+                Plugin.Log!.LogWarning("No hit effect prefabs...");
             }
 
             if (attack.m_startEffect != null && attack.m_startEffect.m_effectPrefabs.Length > 0)
             {
-                Main.Log.LogInfo("Start Effect prefabs...");
+                Plugin.Log.LogInfo("Start Effect prefabs...");
                 foreach (EffectList.EffectData effect in attack.m_startEffect.m_effectPrefabs)
                 {
                     if (effect.m_prefab != null)
                     {
-                        Main.Log!.LogInfo(effect.m_prefab.name);
+                        Plugin.Log!.LogInfo(effect.m_prefab.name);
                     }
                 }
             }
             else
             {
-                Main.Log!.LogWarning("No start effect prefabs...");
+                Plugin.Log!.LogWarning("No start effect prefabs...");
             }
 
             if (attack.m_triggerEffect != null && attack.m_triggerEffect.m_effectPrefabs.Length > 0)
             {
-                Main.Log.LogInfo("Trigger Effect prefabs...");
+                Plugin.Log.LogInfo("Trigger Effect prefabs...");
                 foreach (EffectList.EffectData effect in attack.m_triggerEffect.m_effectPrefabs)
                 {
                     if (effect.m_prefab != null)
                     {
-                        Main.Log!.LogInfo(effect.m_prefab.name);
+                        Plugin.Log!.LogInfo(effect.m_prefab.name);
                     }
                 }
             }
             else
             {
-                Main.Log!.LogWarning("No trigger effect prefabs...");
+                Plugin.Log!.LogWarning("No trigger effect prefabs...");
             }
         }
 
@@ -374,18 +374,18 @@ namespace EnhancedBossesRedone.Data
 
         public static string ReadJsonToText(string filename)
         {
-            string path = Path.Combine(Main.ModPath, filename);
+            string path = Path.Combine(Plugin.ModPath, filename);
             if (!File.Exists(path))
             {
-                throw new FileNotFoundException("No file '" + filename + "' found at location " + Main.ModPath + ".");
+                throw new FileNotFoundException("No file '" + filename + "' found at location " + Plugin.ModPath + ".");
             }
 
             return File.ReadAllText(path);
         }
 
-        public static Dictionary<string, Dictionary<string, Main.ItemInfo>>? DeserializeJson(string JSON)
+        public static Dictionary<string, Dictionary<string, Plugin.ItemInfo>>? DeserializeJson(string JSON)
         {  
-            return JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, Main.ItemInfo>>>(JSON);
+            return JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, Plugin.ItemInfo>>>(JSON);
         }
 
         public static Boss? GetBoss(this Character character)
@@ -417,9 +417,9 @@ namespace EnhancedBossesRedone.Data
 
         public static GameObject Clone(this GameObject prefab, string name)
         {
-            GameObject newPrefab = UnityEngine.Object.Instantiate(prefab, Main.Holder!.transform, false);
+            GameObject newPrefab = UnityEngine.Object.Instantiate(prefab, Plugin.Holder!.transform, false);
             newPrefab.name = name;
-            newPrefab.transform.SetParent(Main.Holder.transform, false);
+            newPrefab.transform.SetParent(Plugin.Holder.transform, false);
             return newPrefab;
         }
 
@@ -430,7 +430,7 @@ namespace EnhancedBossesRedone.Data
             {
                 if (!overwrite)
                 {
-                    Main.Log!.LogWarning("Trying to set prefab " + gameObject.name + " but one exists.");
+                    Plugin.Log!.LogWarning("Trying to set prefab " + gameObject.name + " but one exists.");
                     return;
                 }
                 zNetScene.m_prefabs.Remove(gameObject);
@@ -447,7 +447,7 @@ namespace EnhancedBossesRedone.Data
             {
                 if (!overwrite)
                 {
-                    Main.Log!.LogWarning("Trying to set prefab " + prefab.name + " but one exists.");
+                    Plugin.Log!.LogWarning("Trying to set prefab " + prefab.name + " but one exists.");
                     return;
                 }
                 objectDB.m_items.Remove(prefab);

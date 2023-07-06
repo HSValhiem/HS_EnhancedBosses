@@ -3,15 +3,15 @@ using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
 using UnityEngine;
-using EnhancedBossesRedone.Data;
+using HS_EnhancedBosses.Data;
 
-namespace EnhancedBossesRedone.Abstract
+namespace HS_EnhancedBosses.Abstract
 {
     public abstract class Boss : MonoBehaviour
     {
         public Boss()
         {
-            string nsPath = "EnhancedBossesRedone.BossAttacks." + GetType().Name + "Attacks";
+            string nsPath = "HS_EnhancedBosses.BossAttacks." + GetType().Name + "Attacks";
             List<Type> types = Assembly.GetExecutingAssembly().GetTypes().Where(t => (t.IsClass && t.ToString().StartsWith(nsPath) && !t.ToString().Contains("+<"))).ToList();
             customAttacks = new List<CustomAttack>();
 
@@ -36,13 +36,13 @@ namespace EnhancedBossesRedone.Abstract
             }
 
             pin = PinManager.AddBossPin(position);
-            Main.pinsList.Add(this);
+            Plugin.pinsList.Add(this);
 
             attackStats = new Dictionary<string, CustomAttackData>();
             for (int i = 0; i < humanoid!.m_defaultItems.Length; i += 1)
             {
                 ItemDrop component = humanoid.m_defaultItems[i].GetComponent<ItemDrop>();
-                Main.ItemInfo itemInfo = ConfigManager.BossConfigs![bossName!][component.name];
+                Plugin.ItemInfo itemInfo = ConfigManager.BossConfigs![bossName!][component.name];
                 CustomAttackData data = new CustomAttackData();
                 data.CooldownAdjust = itemInfo.AttackCoolDownMultiplier;
                 data.DefaultCooldown = itemInfo.Cooldown;
@@ -166,7 +166,7 @@ namespace EnhancedBossesRedone.Abstract
         public virtual void SetupCharacter(ZNetScene zNetScene)
         {
             bossPrefab = GetPrefab(zNetScene).Clone(bossName!);
-            bossPrefab.transform.SetParent(Main.Holder!.transform, false);
+            bossPrefab.transform.SetParent(Plugin.Holder!.transform, false);
 
             Boss boss = AddBossComponent(bossPrefab);
             boss.character = bossPrefab.GetComponent<Character>();
@@ -195,7 +195,7 @@ namespace EnhancedBossesRedone.Abstract
         {
             foreach (CustomAttack customAttack in customAttacks!)
             {
-                Main.ItemInfo itemInfo = ConfigManager.BossConfigs![bossName!][customAttack.name!];
+                Plugin.ItemInfo itemInfo = ConfigManager.BossConfigs![bossName!][customAttack.name!];
                 customAttack.Setup(objectDB);
 
                 GameObject prefab = customAttack.attackPrefab!;

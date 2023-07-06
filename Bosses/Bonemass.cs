@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using EnhancedBossesRedone.Abstract;
-using EnhancedBossesRedone.AttachmentScripts;
-using EnhancedBossesRedone.Data;
-using EnhancedBossesRedone.StatusEffects;
+using HS_EnhancedBosses.Abstract;
+using HS_EnhancedBosses.AttachmentScripts;
+using HS_EnhancedBosses.Data;
+using HS_EnhancedBosses.StatusEffects;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.Bosses
+namespace HS_EnhancedBosses.Bosses
 {
     public class Bonemass : Boss
     {
@@ -200,10 +200,10 @@ namespace EnhancedBossesRedone.Bosses
                 }
             }
 
-            Main.Log!.LogInfo("Ancient Oozers Alive: " + oozersInRange.Count.ToString());
+            Plugin.Log!.LogInfo("Ancient Oozers Alive: " + oozersInRange.Count.ToString());
             if (ancientOozerLifetime > ConfigManager.BonemassAncientSlimeLifetime!.Value)
             {
-                Main.Log!.LogInfo("Killing oozers.");
+                Plugin.Log!.LogInfo("Killing oozers.");
                 foreach (Character oozer in oozersInRange!)
                 {
                     oozer!.SetHealth(0.0f);

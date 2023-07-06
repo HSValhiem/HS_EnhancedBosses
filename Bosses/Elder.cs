@@ -1,10 +1,10 @@
-﻿using EnhancedBossesRedone.Abstract;
-using EnhancedBossesRedone.AttachmentScripts;
-using EnhancedBossesRedone.Data;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using HS_EnhancedBosses.Abstract;
+using HS_EnhancedBosses.AttachmentScripts;
+using HS_EnhancedBosses.Data;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.Bosses
+namespace HS_EnhancedBosses.Bosses
 {
     public class Elder : Boss
     {

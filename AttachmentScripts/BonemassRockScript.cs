@@ -1,9 +1,9 @@
-﻿using EnhancedBossesRedone.Bosses;
-using EnhancedBossesRedone.Data;
+﻿using HS_EnhancedBosses.Data;
 using System.Collections.Generic;
+using HS_EnhancedBosses.Bosses;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.AttachmentScripts
+namespace HS_EnhancedBosses.AttachmentScripts
 {
     public class BonemassRockScript : MonoBehaviour
     {
@@ -115,7 +115,7 @@ namespace EnhancedBossesRedone.AttachmentScripts
                 return;
             }
 
-            Main.Log!.LogInfo(other.rigidbody.gameObject.name);
+            Plugin.Log!.LogInfo(other.rigidbody.gameObject.name);
 
             Player player;
             if ((player = other.rigidbody.gameObject.GetComponent<Player>()) != null)

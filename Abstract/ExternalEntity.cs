@@ -1,7 +1,7 @@
-﻿using EnhancedBossesRedone.Data;
+﻿using HS_EnhancedBosses.Data;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.Abstract
+namespace HS_EnhancedBosses.Abstract
 {
     public abstract class ExternalEntity
     {
@@ -9,7 +9,7 @@ namespace EnhancedBossesRedone.Abstract
         {
             if (zNetScene == null)
             {
-                Main.Log!.LogError("No ZNetScene found.");
+                Plugin.Log!.LogError("No ZNetScene found.");
             }
         }
 
@@ -17,12 +17,12 @@ namespace EnhancedBossesRedone.Abstract
         {
             if (zNetScene == null)
             {
-                Main.Log!.LogError("ZNetScene not found. Skipping adding item.");
+                Plugin.Log!.LogError("ZNetScene not found. Skipping adding item.");
                 return;
             }
             if (entity == null)
             {
-                Main.Log!.LogError("No entity found to load.");
+                Plugin.Log!.LogError("No entity found to load.");
                 return;
             }
             zNetScene!.AddCustomPrefab(entity);

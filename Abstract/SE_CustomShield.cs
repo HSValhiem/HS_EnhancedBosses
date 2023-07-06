@@ -1,7 +1,7 @@
-﻿using EnhancedBossesRedone.Data;
+﻿using HS_EnhancedBosses.Data;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.Abstract
+namespace HS_EnhancedBosses.Abstract
 {
     public abstract class SE_CustomShield : SE_Stats
     {

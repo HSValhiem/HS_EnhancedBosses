@@ -1,7 +1,7 @@
-﻿using EnhancedBossesRedone.Abstract;
+﻿using HS_EnhancedBosses.Abstract;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.StatusEffects
+namespace HS_EnhancedBosses.StatusEffects
 {
     public class SE_BaseShield : SE_CustomShield
     {

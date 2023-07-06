@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EnhancedBossesRedone.Data
+namespace HS_EnhancedBosses.Data
 {
     public class CreatureSummon
     {
@@ -9,7 +9,7 @@ namespace EnhancedBossesRedone.Data
             string[] entries = new string[3] { "", "0.0", "1.0" };
             if (data == null || data == "")
             {
-                Main.Log!.LogFatal("Data for creature summon must not be blank.");
+                Plugin.Log!.LogFatal("Data for creature summon must not be blank.");
                 return;
             }
 
@@ -40,14 +40,14 @@ namespace EnhancedBossesRedone.Data
                         if (!float.TryParse(entries[i], out MinHpThreshold))
                         {
                             MinHpThreshold = 0.0f;
-                            Main.Log!.LogWarning("Could not parse value " + entries[i] + " as float for creature " + CreatureName);
+                            Plugin.Log!.LogWarning("Could not parse value " + entries[i] + " as float for creature " + CreatureName);
                         }
                         break;
                     case 2:
                         if (!float.TryParse(entries[i], out MaxHpThreshold))
                         {
                             MaxHpThreshold = 1.0f;
-                            Main.Log!.LogWarning("Could not parse value " + entries[i] + " as float for creature " + CreatureName);
+                            Plugin.Log!.LogWarning("Could not parse value " + entries[i] + " as float for creature " + CreatureName);
                         }
                         break;
                     default:

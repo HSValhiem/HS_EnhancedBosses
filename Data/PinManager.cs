@@ -1,8 +1,8 @@
-﻿using EnhancedBossesRedone.Abstract;
-using System;
+﻿using System;
+using HS_EnhancedBosses.Abstract;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.Data
+namespace HS_EnhancedBosses.Data
 {
     internal class PinManager
     {
@@ -24,9 +24,9 @@ namespace EnhancedBossesRedone.Data
 
         public static void CheckBossPins()
         {
-            for (int i = Main.pinsList.Count - 1; i >= 0; i--)
+            for (int i = Plugin.pinsList.Count - 1; i >= 0; i--)
             {
-                Boss boss = Main.pinsList[i];
+                Boss boss = Plugin.pinsList[i];
                 bool flag = boss.character != null;
                 if (flag)
                 {
@@ -35,7 +35,7 @@ namespace EnhancedBossesRedone.Data
                 else
                 {
                     boss.OnDeath();
-                    Main.pinsList.RemoveAt(i);
+                    Plugin.pinsList.RemoveAt(i);
                 }
             }
         }

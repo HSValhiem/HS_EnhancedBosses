@@ -1,9 +1,9 @@
-﻿using EnhancedBossesRedone.Bosses;
-using EnhancedBossesRedone.Data;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using HS_EnhancedBosses.Bosses;
+using HS_EnhancedBosses.Data;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.AttachmentScripts
+namespace HS_EnhancedBosses.AttachmentScripts
 {
     public class MoveForThrow : MonoBehaviour
     {

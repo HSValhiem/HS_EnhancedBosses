@@ -2,10 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using EnhancedBossesRedone.Data;
-using EnhancedBossesRedone.Abstract;
+using HS_EnhancedBosses.Abstract;
+using HS_EnhancedBosses.Data;
 
-namespace EnhancedBossesRedone.Bosses
+namespace HS_EnhancedBosses.Bosses
 {
     public class Moder : Boss
     {

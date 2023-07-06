@@ -7,26 +7,26 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
-using EnhancedBossesRedone.Data;
-using EnhancedBossesRedone.Abstract;
-using EnhancedBossesRedone.StatusEffects;
+using HS_EnhancedBosses.StatusEffects;
+using HS_EnhancedBosses.Abstract;
+using HS_EnhancedBosses.Data;
 
-namespace EnhancedBossesRedone;
+namespace HS_EnhancedBosses;
 
-[BepInPlugin(PluginGUID, PluginName, PluginVersion)]
+[BepInPlugin(GUID, PluginName, PluginVersion)]
 [BepInDependency("castix_ValheimFPSBoost", BepInDependency.DependencyFlags.SoftDependency)]
 [BepInDependency("org.bepinex.plugins.creaturelevelcontrol", BepInDependency.DependencyFlags.SoftDependency)]
-public class Main : BaseUnityPlugin
+public class Plugin : BaseUnityPlugin
 {
 
-    public const string PluginGUID = "hs.enhancedbosses";
+    public const string GUID = "hs.enhancedbosses";
     public const string PluginName = "HS_EnhancedBosses";
-    public const string PluginVersion = "2.0.0";
-    private static Main? instance;
+    public const string PluginVersion = "1.10.4";
+    private static Plugin? instance;
 
     public AssetBundle? assetBundle;
-    public static Harmony harmony = new Harmony(PluginGUID);
-    public static readonly string ModPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+    public static Harmony harmony = new (GUID);
+    public static readonly string? ModPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
     public static AssetBundle? Bundle;
 
@@ -34,7 +34,7 @@ public class Main : BaseUnityPlugin
     public static List<ExternalEntity>? externalEntities;
     public static List<ExternalItem>? externalItems;
 
-    public static List<StatusEffect> statusEffects = new List<StatusEffect>()
+    public static List<StatusEffect> statusEffects = new ()
     {
         //ScriptableObject.CreateInstance<SE_BaseShield>(),
         //ScriptableObject.CreateInstance<SE_Slow>(),
@@ -42,7 +42,7 @@ public class Main : BaseUnityPlugin
     };
 
     public static GameObject? Holder;
-    public static List<Boss> pinsList = new List<Boss>();
+    public static List<Boss> pinsList = new ();
     public static ManualLogSource? Log;
 
     public class ItemInfo
@@ -77,7 +77,7 @@ public class Main : BaseUnityPlugin
         bool configLoaded = ConfigManager.CreateConfigValues(this);
         if (!configLoaded)
         {
-            Main.Log.LogInfo("This mod has been disabled from load due to incorrect configurations.");
+            Plugin.Log.LogInfo("This mod has been disabled from load due to incorrect configurations.");
             Destroy(this);
             return;
         }
@@ -89,7 +89,7 @@ public class Main : BaseUnityPlugin
         GetExternalEntities();
         GetExternalAttacks();
 
-        Harmony harmony = Main.harmony;
+        Harmony harmony = Plugin.harmony;
         if (harmony != null)
         {
             harmony.PatchAll();
@@ -100,7 +100,7 @@ public class Main : BaseUnityPlugin
     /**
 	 * Return the instance.
 	 */
-    public static Main GetInstance()
+    public static Plugin GetInstance()
     {
         return instance!;
     }
@@ -125,7 +125,7 @@ public class Main : BaseUnityPlugin
 	 */
     private static void GetBosses()
     {
-        List<Type> types = Assembly.GetExecutingAssembly().GetTypes().Where(t => (t.IsClass && t.ToString().StartsWith("EnhancedBossesRedone.Bosses") && !t.ToString().Contains("+<"))).ToList();
+        List<Type> types = Assembly.GetExecutingAssembly().GetTypes().Where(t => (t.IsClass && t.ToString().StartsWith("HS_EnhancedBosses.Bosses") && !t.ToString().Contains("+<"))).ToList();
         bossList = new List<Boss>();
 
         foreach (Type type in types)
@@ -139,7 +139,7 @@ public class Main : BaseUnityPlugin
 	 */
     private static void GetExternalEntities()
     {
-        List<Type> types = Assembly.GetExecutingAssembly().GetTypes().Where(t => (t.IsClass && t.ToString().StartsWith("EnhancedBossesRedone.Entity") && !t.ToString().Contains("+<") && t != null)).ToList();
+        List<Type> types = Assembly.GetExecutingAssembly().GetTypes().Where(t => (t.IsClass && t.ToString().StartsWith("HS_EnhancedBosses.Entity") && !t.ToString().Contains("+<") && t != null)).ToList();
         externalEntities = new List<ExternalEntity>();
         foreach (Type type in types)
         {
@@ -152,7 +152,7 @@ public class Main : BaseUnityPlugin
 	 */
     private static void GetExternalAttacks()
     {
-        List<Type> types = Assembly.GetExecutingAssembly().GetTypes().Where(t => (t.IsClass && t.ToString().StartsWith("EnhancedBossesRedone.Item") && !t.ToString().Contains("+<") && t != null)).ToList();
+        List<Type> types = Assembly.GetExecutingAssembly().GetTypes().Where(t => (t.IsClass && t.ToString().StartsWith("HS_EnhancedBosses.Item") && !t.ToString().Contains("+<") && t != null)).ToList();
         externalItems = new List<ExternalItem>();
         foreach (Type type in types)
         {

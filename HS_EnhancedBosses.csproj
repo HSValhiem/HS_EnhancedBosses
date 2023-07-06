@@ -4,7 +4,7 @@
     <TargetFramework>net462</TargetFramework>
     <AssemblyName>HS_EnhancedBosses</AssemblyName>
     <Description>HS_EnhancedBosses</Description>
-    <Version>0.1.0</Version>
+    <Version>1.10.4</Version>
 	<LangVersion>10</LangVersion>
 	<Nullable>enable</Nullable>
 	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -14,6 +14,14 @@
     <Compile Remove="ExportedAssets\**" />
     <EmbeddedResource Remove="ExportedAssets\**" />
     <None Remove="ExportedAssets\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="assets\ebr_assetbundle" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="assets\ebr_assetbundle" />
   </ItemGroup>
 
 	<ItemGroup>
@@ -67,6 +75,9 @@
 	  </Reference>
 	  <Reference Include="BepInEx">
 	    <HintPath>Libs\BepInEx\BepInEx.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Newtonsoft.Json">
+	    <HintPath>Libs\Newtonsoft.Json.dll</HintPath>
 	  </Reference>
 	  <Reference Include="ServerSync" Publicize="true">
 	    <HintPath>Libs\Blaxxun\ServerSync.dll</HintPath>
@@ -312,6 +323,9 @@
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	  <None Update="Libs\Jotuun\Jotunn.dll">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Libs\Newtonsoft.Json.dll">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	  <None Update="ServerSync.dll">

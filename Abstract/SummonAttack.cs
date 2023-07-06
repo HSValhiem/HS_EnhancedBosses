@@ -1,10 +1,10 @@
 ﻿using BepInEx.Bootstrap;
-using EnhancedBossesRedone.Data;
 using System.Collections.Generic;
 using System.Linq;
+using HS_EnhancedBosses.Data;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.Abstract
+namespace HS_EnhancedBosses.Abstract
 {
     public abstract class SummonAttack : CustomAttack
     {
@@ -175,13 +175,13 @@ namespace EnhancedBossesRedone.Abstract
         {
             if (summonGroup == null)
             {
-                Main.Log!.LogError("Creature group is null.");
+                Plugin.Log!.LogError("Creature group is null.");
             }
 
             List<string> creatures = summonGroup!.GetSummonsForThreshold(character.GetHealthPercentage() / GetHpThreshold());
             if (creatures.Count == 0)
             {
-                Main.Log!.LogWarning("No creatures exist in current HP threshold.");
+                Plugin.Log!.LogWarning("No creatures exist in current HP threshold.");
                 return null;
             }
 

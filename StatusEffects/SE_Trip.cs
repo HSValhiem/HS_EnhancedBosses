@@ -1,9 +1,9 @@
-﻿using EnhancedBossesRedone.Data;
-using System.Collections;
+﻿using System.Collections;
+using HS_EnhancedBosses.Data;
 using UnityEngine;
 using UnityEngine.PostProcessing;
 
-namespace EnhancedBossesRedone.StatusEffects
+namespace HS_EnhancedBosses.StatusEffects
 {
     public class SE_Trip : StatusEffect
     {
@@ -11,7 +11,7 @@ namespace EnhancedBossesRedone.StatusEffects
             name = "eb_trip";
             m_name = "Hallucinations";
             m_ttl = 1f;
-            m_icon = Main.Bundle!.LoadAsset<Sprite>("trip");
+            m_icon = Plugin.Bundle!.LoadAsset<Sprite>("trip");
             m_attributes = StatusAttribute.None;
         }
 

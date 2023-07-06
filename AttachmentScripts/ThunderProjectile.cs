@@ -1,9 +1,9 @@
-﻿using EnhancedBossesRedone.Data;
+﻿using HS_EnhancedBosses.Data;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.AttachmentScripts
+namespace HS_EnhancedBosses.AttachmentScripts
 {
     internal class ThunderProjectile : MonoBehaviour
     {

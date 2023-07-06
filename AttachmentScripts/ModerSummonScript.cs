@@ -1,7 +1,7 @@
-﻿using EnhancedBossesRedone.Data;
+﻿using HS_EnhancedBosses.Data;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.AttachmentScripts
+namespace HS_EnhancedBosses.AttachmentScripts
 {
     public class ModerSummonScript : MonoBehaviour
     {

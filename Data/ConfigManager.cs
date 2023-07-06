@@ -5,17 +5,17 @@ using ServerSync;
 using System;
 using System.Collections.Generic;
 
-namespace EnhancedBossesRedone.Data
+namespace HS_EnhancedBosses.Data
 {
     internal class ConfigManager
     {
         public static bool CreateConfigValues(BaseUnityPlugin plugin)
         {
-            configSync = new ConfigSync(Main.PluginGUID)
+            configSync = new ConfigSync(Plugin.GUID)
             {
                 DisplayName = "Enhanced Bosses Redone",
-                CurrentVersion = Main.PluginVersion,
-                MinimumRequiredVersion = Main.PluginVersion,
+                CurrentVersion = Plugin.PluginVersion,
+                MinimumRequiredVersion = Plugin.PluginVersion,
                 ModRequired = true,
             };
 
@@ -28,12 +28,12 @@ namespace EnhancedBossesRedone.Data
             bool JsonLoaded = LoadJsonConfig(plugin, JsonSettings.Value);
             if (!JsonLoaded)
             {
-                Main.Log!.LogInfo("Attempting to load the default JSON config.");
+                Plugin.Log!.LogInfo("Attempting to load the default JSON config.");
                 JsonLoaded = LoadJsonConfig(plugin, defaultJsonFile);
             }
             if (!JsonLoaded)
             {
-                Main.Log!.LogError("Failed to load necessary configuration files.");
+                Plugin.Log!.LogError("Failed to load necessary configuration files.");
                 return false;
             }
 
@@ -94,11 +94,11 @@ namespace EnhancedBossesRedone.Data
             {
                 if (fileName == defaultJsonFile)
                 {
-                    Main.Log!.LogError("The default JSON file '" + defaultJsonFile + "' is missing.");
+                    Plugin.Log!.LogError("The default JSON file '" + defaultJsonFile + "' is missing.");
                 }
                 else
                 {
-                    Main.Log!.LogWarning(e.Message);
+                    Plugin.Log!.LogWarning(e.Message);
                 }
                 return false;
             }
@@ -113,7 +113,7 @@ namespace EnhancedBossesRedone.Data
             }
             catch (Exception e)
             {
-                Main.Log!.LogError(e.Message);
+                Plugin.Log!.LogError(e.Message);
                 return false;
             }
         }
@@ -123,7 +123,7 @@ namespace EnhancedBossesRedone.Data
 
         public static ConfigSync? configSync;
 
-        public static Dictionary<string, Dictionary<string, Main.ItemInfo>>? BossConfigs;
+        public static Dictionary<string, Dictionary<string, Plugin.ItemInfo>>? BossConfigs;
         public static ConfigEntry<bool>? ModEnabled;
         public static ConfigEntry<string>? JsonSettings;
         public static ConfigEntry<string>? RawJson;

@@ -1,11 +1,11 @@
-﻿using EnhancedBossesRedone.Abstract;
-using EnhancedBossesRedone.AttachmentScripts;
-using EnhancedBossesRedone.Data;
+﻿using HS_EnhancedBosses.Data;
 using System.Collections;
 using System.Collections.Generic;
+using HS_EnhancedBosses.Abstract;
+using HS_EnhancedBosses.AttachmentScripts;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.Bosses
+namespace HS_EnhancedBosses.Bosses
 {
     public class Yagluth : Boss
     {

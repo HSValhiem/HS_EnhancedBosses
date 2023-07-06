@@ -1,9 +1,9 @@
 ﻿using BepInEx.Bootstrap;
-using EnhancedBossesRedone.Data;
 using System;
+using HS_EnhancedBosses.Data;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.Abstract
+namespace HS_EnhancedBosses.Abstract
 {
     public abstract class CustomAttack
     {
@@ -37,8 +37,8 @@ namespace EnhancedBossesRedone.Abstract
             }
             catch (Exception e)
             {
-                Main.Log!.LogWarning("No JSON entry found for " + name + ". Disabling.");
-                Main.Log!.LogWarning(e.Message);
+                Plugin.Log!.LogWarning("No JSON entry found for " + name + ". Disabling.");
+                Plugin.Log!.LogWarning(e.Message);
                 return false;
             }
         }
@@ -115,7 +115,7 @@ namespace EnhancedBossesRedone.Abstract
         {
             GameObject prefab = objectDB.GetItemPrefab(baseName);
             attackPrefab = name == baseName ? prefab : prefab.Clone(name!);
-            attackPrefab.transform.SetParent(Main.Holder!.transform, false);
+            attackPrefab.transform.SetParent(Plugin.Holder!.transform, false);
 
             itemDrop = attackPrefab.GetComponent<ItemDrop>();
             attack = itemDrop.m_itemData.m_shared.m_attack;

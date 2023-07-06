@@ -1,7 +1,7 @@
-﻿using EnhancedBossesRedone.Data;
+﻿using HS_EnhancedBosses.Data;
 using UnityEngine;
 
-namespace EnhancedBossesRedone.StatusEffects
+namespace HS_EnhancedBosses.StatusEffects
 {
     internal class SE_Slow : SE_Stats
     {
